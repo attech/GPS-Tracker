@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_settings"/><item android:id="@+id/close" android:title="@string/close" android:orderInCategory="200"></item>
+        <item android:id="@+id/logout" android:title="@string/logout" android:orderInCategory="150"></item>
+    
+
+</menu>
