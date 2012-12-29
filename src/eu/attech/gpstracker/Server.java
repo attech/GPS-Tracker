@@ -13,9 +13,6 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -25,8 +22,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 public class Server {
 
@@ -123,7 +118,7 @@ public class Server {
 	public void getActualVersion(String clientVersionS) {
 		
 		final String clientVersion = clientVersionS;
-		final String url = "http://app.attech.eu/gpstracker/version.html";
+		final String url = "http://app.attech.eu/download/GPS-Tracker/version.html";
 		
 		new Thread () {
 			public void run() {
@@ -154,7 +149,9 @@ public class Server {
 		                  in.close();
 	                  
 				}catch (IOException e) {
-	                e.printStackTrace();
+	                
+	            } finally {
+	            	
 	            }
 				messageHandler.sendMessage(msg);
 			}
