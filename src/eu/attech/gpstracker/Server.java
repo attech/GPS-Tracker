@@ -13,10 +13,14 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -241,11 +245,25 @@ public class Server {
 
 	
 	/* If threre is an new Version, Download it */
+	@SuppressWarnings("deprecation")
 	public void downloadNewApp() {
 		
+		String ns = Context.NOTIFICATION_SERVICE;
+		NotificationManager mManager = (NotificationManager) activity.getSystemService(ns);
 		
-       
- 
+		int icon = R.drawable.ic_launcher;
+		CharSequence tickerText = "New Version Available";
+		long when = System.currentTimeMillis();
+		Context context = activity.getApplicationContext();
+		CharSequence contextTitle = "New Version Available";
+		CharSequence contextText = "Click here to Download new Version.";
+		Intent notificationIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://app.attech.eu/download/GPS-Tracker/GPS-Tracker.apk"));
+		PendingIntent contentIntent = PendingIntent.getActivity(activity, 0, notificationIntent, 0);
+		Notification not = new Notification(icon, tickerText, when);
+		not.setLatestEventInfo(context, contextTitle, contextText, contentIntent);
+		
+		mManager.notify(1, not);
+		
         
 		Log.d("AAA", "Downloading new App...");
 	}
