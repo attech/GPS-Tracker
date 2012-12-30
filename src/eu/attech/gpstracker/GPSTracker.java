@@ -66,7 +66,9 @@ public class GPSTracker extends Activity {
 	/* Remove the Update Hamdler, if the app was Paused */
 	@Override
 	protected void onPause() {
-		gps.getLocationManager().removeUpdates(gps); // We would not to remove the GPS if the Display is off
+		gps.getLocationManager().removeUpdates(gps); // We would not to remove
+														// the GPS if the
+														// Display is off
 		super.onPause();
 	}
 
@@ -76,7 +78,7 @@ public class GPSTracker extends Activity {
 		gps.startSearchGPS();
 		super.onResume();
 	}
-	
+
 	/* Is the Last Method wich is called */
 	public void exit() {
 		gps.getLocationManager().removeUpdates(gps);

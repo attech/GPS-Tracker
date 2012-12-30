@@ -25,7 +25,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
 public class Server {
 
@@ -45,7 +44,6 @@ public class Server {
 	 * and Username)
 	 */
 	public void loginToServer() {
-		Log.d("AAA", "Not Implementet yet");
 		login("OKA", "TEST");
 		activity.finish();
 		activity.startActivity(new Intent(activity, GPSTracker.class));
@@ -93,9 +91,7 @@ public class Server {
 					reader.close();
 					return true;
 				}
-
 			}
-
 		} catch (IOException e) {
 		}
 
@@ -271,6 +267,7 @@ public class Server {
 		PendingIntent contentIntent = PendingIntent.getActivity(activity, 0,
 				notificationIntent, 0);
 		Notification not = new Notification(icon, tickerText, when);
+		not.flags = Notification.FLAG_AUTO_CANCEL;
 		not.setLatestEventInfo(context, contextTitle, contextText,
 				contentIntent);
 		mManager.notify(1, not);
