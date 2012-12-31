@@ -170,37 +170,59 @@ public class Server {
 			switch (msg.what) {
 			case 1:
 
-				String s = msg.getData().getString("serverVersion");
-				char a = s.charAt(0);
-				char b = s.charAt(1);
-				char c = s.charAt(2);
-				String s1 = "" + a + b + c;
-				int serverVersion = Integer.parseInt(s1);
+				String s3 = msg.getData().getString("serverVersion");
+				
+				
+				// Funktioniert nicht, wenn weniger als 3 Zeichen sind
+				
+				
+				char[] ch2 = s3.toCharArray();
+				String s4 = "";
+				char a3;
+				char b3;
+				char c3;
+				if (ch2.length < 3) {
+					if (ch2.length < 2) {
+						a3 = s3.charAt(0);
+						s4 = "" + a3;
+					} else {
+						a3 = s3.charAt(0);
+						b3 = s3.charAt(1);
+						s4 = "" + a3 + b3;
+					}
+				} else {
 
+					a3 = s3.charAt(0);
+					b3 = s3.charAt(1);
+					c3 = s3.charAt(2);
+					s4 = "" + a3 + b3 + c3;
+				}
+				int serverVersion = Integer.parseInt(s4);
+				
 				String s2 = msg.getData().getString("clientVersion");
 
 				char[] ch = s2.toCharArray();
-				String s3 = "";
+				String s5 = "";
 				char a2;
 				char b2;
 				char c2;
 				if (ch.length < 3) {
 					if (ch.length < 2) {
 						a2 = s2.charAt(0);
-						s3 = "" + a2;
+						s5 = "" + a2;
 					} else {
 						a2 = s2.charAt(0);
 						b2 = s2.charAt(1);
-						s3 = "" + a2 + b2;
+						s5 = "" + a2 + b2;
 					}
 				} else {
 
 					a2 = s2.charAt(0);
 					b2 = s2.charAt(1);
 					c2 = s2.charAt(2);
-					s3 = "" + a2 + b2 + c2;
+					s5 = "" + a2 + b2 + c2;
 				}
-				int clientVersion = Integer.parseInt(s3);
+				int clientVersion = Integer.parseInt(s5);
 				if (serverVersion > clientVersion) {
 					downloadNewApp();
 				}
@@ -240,7 +262,6 @@ public class Server {
 		} finally {
 
 		}
-
 		return in;
 	}
 
