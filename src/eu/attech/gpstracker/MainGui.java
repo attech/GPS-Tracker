@@ -1,5 +1,7 @@
 package eu.attech.gpstracker;
 
+import server.Server;
+import gps.GPS;
 import android.app.Activity;
 import android.content.Intent;
 import android.location.LocationManager;
@@ -16,7 +18,7 @@ import android.view.WindowManager.LayoutParams;
  * 
  */
 
-public class GPSTracker extends Activity {
+public class MainGui extends Activity {
 
 	// Create Local Variables
 	private GPS gps;

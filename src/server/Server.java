@@ -1,4 +1,4 @@
-package eu.attech.gpstracker;
+package server;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,6 +11,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+
+import eu.attech.gpstracker.MainGui;
+import eu.attech.gpstracker.R;
+import eu.attech.gpstracker.Main;
+import eu.attech.gpstracker.R.drawable;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -46,7 +51,7 @@ public class Server {
 	public void loginToServer() {
 		login("OKA", "TEST");
 		activity.finish();
-		activity.startActivity(new Intent(activity, GPSTracker.class));
+		activity.startActivity(new Intent(activity, MainGui.class));
 	}
 
 	/* Check if the Network is connected (required for the First start) */
@@ -69,7 +74,7 @@ public class Server {
 				write.write("");
 				write.close();
 				activity.finish();
-				activity.startActivity(new Intent(activity, StartPage.class));
+				activity.startActivity(new Intent(activity, Main.class));
 			}
 		} catch (IOException e) {
 		}

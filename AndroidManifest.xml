@@ -17,12 +17,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="eu.attech.gpstracker.GPSTracker"
+            android:name="eu.attech.gpstracker.MainGui"
             android:label="@string/app_name" 
             android:screenOrientation="portrait">
         </activity>
         <activity android:name="Settings"></activity>
-        <activity android:name="StartPage"><intent-filter>
+        <activity android:name="eu.attech.gpstracker.Main"><intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

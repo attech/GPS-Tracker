@@ -1,8 +1,11 @@
-package eu.attech.gpstracker;
+package gps;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+
+import eu.attech.gpstracker.R;
+import eu.attech.gpstracker.R.id;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import server.Server;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -26,7 +28,7 @@ import android.widget.Toast;
  * 
  */
 
-public class StartPage extends Activity {
+public class Main extends Activity {
 
 	private Server server;
 	
@@ -76,7 +78,7 @@ public class StartPage extends Activity {
 		checkIfUpdate();
 		if(server.IsLoggedIn()){
 			finish();
-			startActivity(new Intent(this, GPSTracker.class));
+			startActivity(new Intent(this, MainGui.class));
 		}
 		
 		EditText ed1 = (EditText)findViewById(R.id.editText1);
