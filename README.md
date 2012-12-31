@@ -5,6 +5,10 @@ German Version
 --------------
 
 
+	Berechtigungen
+	--------------
+
+
 
 
 English Version
