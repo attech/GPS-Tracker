@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import gui.MainGui;
+import gui.Register;
+
 import server.Server;
 
 import android.app.Activity;

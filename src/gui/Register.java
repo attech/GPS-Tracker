@@ -1,5 +1,7 @@
-package eu.attech.gpstracker;
+package gui;
 
+import eu.attech.gpstracker.R;
+import eu.attech.gpstracker.R.layout;
 import android.app.Activity;
 import android.os.Bundle;
 

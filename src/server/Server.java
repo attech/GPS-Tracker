@@ -12,10 +12,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import eu.attech.gpstracker.MainGui;
 import eu.attech.gpstracker.R;
 import eu.attech.gpstracker.Main;
 import eu.attech.gpstracker.R.drawable;
+import gui.MainGui;
 
 import android.app.Activity;
 import android.app.Notification;
