@@ -1,9 +1,11 @@
-package eu.attech.gpstracker;
+package main;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import eu.attech.gpstracker.R;
 
 import gui.MainGui;
 import gui.Register;
