@@ -1,5 +1,8 @@
 package server;
 
+import eu.attech.gpstracker.R;
+import gui.MainGui;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -13,11 +16,6 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import main.Main;
-
-import eu.attech.gpstracker.R;
-import eu.attech.gpstracker.R.drawable;
-import gui.MainGui;
-
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -28,7 +26,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 
@@ -180,17 +177,15 @@ public class Server {
 
 				String s3 = msg.getData().getString("serverVersion");
 				
-				
-				// Funktioniert nicht, wenn weniger als 3 Zeichen sind
-				
-				
 				char[] ch2 = s3.toCharArray();
 				String s4 = "";
-				char a3;
-				char b3;
-				char c3;
-				if (ch2.length < 3) {
-					if (ch2.length < 2) {
+				char a3 = 0;
+				char b3 = 0;
+				char c3 = 0;
+				int a = ch2.length-1;
+				
+				if (a < 3) {
+					if (a < 2) {
 						a3 = s3.charAt(0);
 						s4 = "" + a3;
 					} else {
@@ -199,17 +194,18 @@ public class Server {
 						s4 = "" + a3 + b3;
 					}
 				} else {
-
 					a3 = s3.charAt(0);
 					b3 = s3.charAt(1);
 					c3 = s3.charAt(2);
 					s4 = "" + a3 + b3 + c3;
 				}
+				
 				int serverVersion = Integer.parseInt(s4);
 				
 				String s2 = msg.getData().getString("clientVersion");
 
 				char[] ch = s2.toCharArray();
+				
 				String s5 = "";
 				char a2;
 				char b2;
