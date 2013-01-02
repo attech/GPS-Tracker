@@ -37,6 +37,8 @@ public class Server {
 	protected static final int NOTIFICATION_ID = 0;
 	private Activity activity;
 	private String version;
+	
+	private String appDownload = "http://app.attech.eu/download/GPS-Tracker/version.html";
 
 	// private NotificationManager mNotificationManager;
 	// private int NOTFICATION_ID;
@@ -67,9 +69,9 @@ public class Server {
 	/* This Method logout the User from the Server */
 	public void logout() {
 		try {
-			File root = Environment.getExternalStorageDirectory();
+			File root = activity.getFilesDir();
 			if (root.canWrite()) {
-				File login = new File(root, "gpstracker/login.dat");
+				File login = new File(root, "login.dat");
 				FileWriter loginwriter = new FileWriter(login);
 				BufferedWriter write = new BufferedWriter(loginwriter);
 				write.write("");
@@ -86,9 +88,9 @@ public class Server {
 	 */
 	public boolean IsLoggedIn() {
 		try {
-			File root = Environment.getExternalStorageDirectory();
+			File root = activity.getFilesDir();
 			if (root.canWrite()) {
-				File login = new File(root, "gpstracker/login.dat");
+				File login = new File(root, "login.dat");
 				FileReader reader = new FileReader(login);
 				if (reader.read() < 0) {
 					reader.close();
@@ -107,9 +109,9 @@ public class Server {
 	/* IF it is true then the user is logged in */
 	public void login(String user, String pass) {
 		try {
-			File root = Environment.getExternalStorageDirectory();
+			File root = activity.getFilesDir();
 			if (root.canWrite()) {
-				File login = new File(root, "gpstracker/login.dat");
+				File login = new File(root, "login.dat");
 				FileWriter loginwriter = new FileWriter(login);
 				BufferedWriter write = new BufferedWriter(loginwriter);
 				write.write("" + user + "\n" + pass);
@@ -124,7 +126,7 @@ public class Server {
 	public void getActualVersion(String clientVersionS) {
 
 		final String clientVersion = clientVersionS;
-		final String url = "http://app.attech.eu/download/GPS-Tracker/version.html";
+		final String url = appDownload;
 
 		new Thread() {
 			public void run() {
@@ -137,7 +139,7 @@ public class Server {
 
 					if (in == null) {
 						System.err
-								.println("Could not get Version, Server down?");
+								.println("Could not get New App Version, Server down?");
 					} else {
 						InputStreamReader isr = new InputStreamReader(in);
 						int charRead;
@@ -159,7 +161,7 @@ public class Server {
 						messageHandler.sendMessage(msg);
 					}
 				} catch (IOException e) {
-					e.printStackTrace();
+					
 				}
 			}
 		}.start();

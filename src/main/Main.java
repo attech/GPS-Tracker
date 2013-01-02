@@ -5,14 +5,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import eu.attech.gpstracker.R;
-
-import gui.MainGui;
-import gui.Register;
-
 import server.Server;
-
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
@@ -24,6 +19,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import eu.attech.gpstracker.R;
+import gui.MainGui;
+import gui.Register;
 
 /**
  * 
@@ -40,6 +38,7 @@ public class Main extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		server = new Server(this);
+		
 		setContentView(R.layout.startpage);
 		checkIfFirstStart();
 		super.onCreate(savedInstanceState);
@@ -47,12 +46,14 @@ public class Main extends Activity {
 
 	/* Check if the App is started the first time or not */
 	public void checkIfFirstStart() {
-		File root = Environment.getExternalStorageDirectory();
+		File root = this.getFilesDir();
 		if (root.canWrite()) {
-			File version = new File(root, "gpstracker/version.dat");
+			
+			File version = new File(root, "version.dat");
 			if (!version.exists()) {
 				Log.d("AAA", "First Start");
 				if (server.checkIfNetworkIsOn()) {
+					Log.d("AAA", "TEST");
 					createFiles();
 				} else {
 					Toast.makeText(this, "Please turn Internet on!",
@@ -80,6 +81,9 @@ public class Main extends Activity {
 	
 	/* Create the Login Screen for the App*/
 	public void createLoginScreen() {
+		
+		
+		
 		checkIfUpdate();
 		if(server.IsLoggedIn()){
 			finish();
@@ -130,18 +134,16 @@ public class Main extends Activity {
 	 */
 	public void createFiles() {
 		try {
-			File root = Environment.getExternalStorageDirectory();
+			File root = this.getFilesDir();
 			if (root.canWrite()) {
-				File folder = new File(root, "gpstracker/");
-				folder.mkdirs();
-				File version = new File(root, "gpstracker/version.dat");
+				File version = new File(root, "version.dat");
 				FileWriter versionwriter = new FileWriter(version);
 				BufferedWriter out = new BufferedWriter(versionwriter);
 				out.write(""
 						+ getPackageManager().getPackageInfo(getPackageName(),
 								0).versionCode);
 				out.close();
-				File login = new File(root, "gpstracker/login.dat");
+				File login = new File(root, "login.dat");
 				FileWriter loginwriter = new FileWriter(login);
 				BufferedWriter write = new BufferedWriter(loginwriter);
 				write.write("");
