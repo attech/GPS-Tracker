@@ -1,7 +1,7 @@
 GPS-Tracker
 ===========
 
-German Version
+German Version  
 --------------
 
 
