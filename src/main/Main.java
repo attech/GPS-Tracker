@@ -1,9 +1,12 @@
 package main;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import server.Server;
 import android.app.Activity;
@@ -161,9 +164,13 @@ public class Main extends Activity {
 	public void checkIfUpdate() {
 		if(server.checkIfNetworkIsOn()) {
 			try {
-				String version = ""+getPackageManager().getPackageInfo(getPackageName(),0).versionCode;
+				InputStream in = this.getAssets().open("data/version.dat");
+			    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+				String version = reader.readLine();
 				server.getActualVersion(version);
-			} catch (NameNotFoundException e) {
+				Log.d("AAA", "Version: " + version);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
